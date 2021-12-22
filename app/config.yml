@@ -3,25 +3,24 @@ backend:
   name: github
   branch: main
   repo: digital-land/cms-test
-
-# where are we placing any images/
+# where are we placing any images
 media_folder: app/images
 # what path will images be served from
 public_folder: /public/images/
-
 # set this to true when working locally and run: npx netlify-cms-proxy-server
 local_backend: true
-
+# tells the CMS to show a bespoke logo (helps users know they are in the right place)
+logo_url: /images/logo.svg
 # A list of collections the CMS should be able to edit
 collections:
   # Used in routes, ie.: /admin/collections/:slug/edit
   - name: 'datasets'
     label: 'Datasets'             # Used in the CMS UI
     label_singular: 'Dataset'     # Used in the UI, ie: "New Dataset"
-    folder: 'content/datasets'
-    slug: '{{dataset}}'
-    identifier_field: 'dataset'
-    summary: '{{name}}'
+    folder: 'content/datasets'    # where generated markdown content files should live
+    slug: '{{dataset}}'           # what the generated markdown file name will be, reference a field such as {{title}}
+    identifier_field: 'dataset'   # we are not using title so tell netlifycms which field to use as an identifier (of unique datasets)
+    summary: '{{name}}'           # in the CMS UI so this summary of each item in the collection, reference a field such as {{title}}
     create: true                  # Allow users to create new documents in this collection
     fields:                       # The fields each document in this collection have
       - {
@@ -36,8 +35,20 @@ collections:
           hint: 'The human friendly name for this dataset'
         }
       - {
+          label: 'Plural',
+          name: 'plural',
+          widget: 'string',
+          hint: 'The name of this dataset pluralised'
+        }
+      - {
           label: 'End date',
           name: 'end-date',
+          widget: 'datetime',
+          format: 'YYYY-MM-DDTHH:mm:ssZZ',
+        }
+      - {
+          label: 'Start date',
+          name: 'start-date',
           widget: 'datetime',
           format: 'YYYY-MM-DDTHH:mm:ssZZ',
         }
@@ -50,7 +61,7 @@ collections:
           label: 'Body',
           name: 'body',
           widget: 'markdown',
-          hint: 'Dataset description goes in here'
+          hint: 'Body content for the page about this dataset'
         }
 
 
