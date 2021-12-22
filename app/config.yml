@@ -1,0 +1,56 @@
+# where are the files hosted
+backend:
+  name: github
+  branch: main
+  repo: digital-land/cms-test
+
+# where are we placing any images/
+media_folder: app/images
+# what path will images be served from
+public_folder: /public/images/
+
+# set this to true when working locally and run: npx netlify-cms-proxy-server
+local_backend: true
+
+# A list of collections the CMS should be able to edit
+collections:
+  # Used in routes, ie.: /admin/collections/:slug/edit
+  - name: 'datasets'
+    label: 'Datasets'             # Used in the CMS UI
+    label_singular: 'Dataset'     # Used in the UI, ie: "New Dataset"
+    folder: 'content/datasets'
+    slug: '{{dataset}}'
+    identifier_field: 'dataset'
+    summary: '{{name}}'
+    create: true                  # Allow users to create new documents in this collection
+    fields:                       # The fields each document in this collection have
+      - {
+          label: 'Dataset',       # The field label shown to user in the CMS UI
+          name: 'dataset',        # the field name generated and added to the frontmatter
+          widget: 'string',       # the datatype of this field (called a widget in NetlifyCMS)
+        }
+      - {
+          label: 'Name',
+          name: 'name',
+          widget: 'string',
+          hint: 'The human friendly name for this dataset'
+        }
+      - {
+          label: 'End date',
+          name: 'end-date',
+          widget: 'datetime',
+          format: 'YYYY-MM-DDTHH:mm:ssZZ',
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "text"
+        }
+      - {
+          label: 'Body',
+          name: 'body',
+          widget: 'markdown',
+          hint: 'Dataset description goes in here'
+        }
+
+

@@ -1,0 +1,40 @@
+{
+  "name": "digital-land-cms",
+  "version": "1.0.0",
+  "description": "A configured instance of NetlifyCMS for Digital Land",
+  "scripts": {
+    "copy:app": "cpx 'app/**/*' public --clean",
+    "copy:netlify-cms": "cpx 'node_modules/netlify-cms/dist/*.*' public/netlify-cms/ --clean",
+    "prebuild": "npm-run-all --serial copy:*",
+    "build": "npm-run-all --serial prebuild",
+    "watch:app": "cpx 'app/**/*' public --watch --verbose",
+    "serve:netlify-proxy": "npx netlify-cms-proxy-server",
+    "serve:browsersync": "npx wait-on tcp:8081 && browser-sync start --server 'public' --files 'app' 'content'",
+    "serve": "npm-run-all --parallel --race serve:* watch:*",
+    "start": "npm-run-all --serial build serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digital-land/cms.git"
+  },
+  "keywords": [
+    "netlifycms",
+    "digital-land"
+  ],
+  "author": "Digital Land Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/digital-land/cms/issues"
+  },
+  "homepage": "https://github.com/digital-land/cms#readme",
+  "dependencies": {
+    "netlify-cms": "^2.10.182",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.27.7",
+    "cpx": "^1.5.0",
+    "wait-on": "^6.0.0"
+  }
+}
