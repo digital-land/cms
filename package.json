@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A configured instance of NetlifyCMS for Digital Land",
   "scripts": {
-    "copy:app": "cpx 'app/**/*' public --clean",
-    "copy:netlify-cms": "cpx 'node_modules/netlify-cms/dist/*.*' public/netlify-cms/ --clean",
+    "copy:app": "cpx 'app/**/*' public --clean --verbose",
+    "copy:netlify-cms": "cpx 'node_modules/netlify-cms/dist/*.*' public/netlify-cms/ --clean --verbose",
     "prebuild": "npm-run-all --serial copy:*",
     "build": "npm-run-all --serial prebuild",
     "watch:app": "cpx 'app/**/*' public --watch --verbose",
