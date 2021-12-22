@@ -105,5 +105,7 @@ dist
 
 # the app will create this on deploy
 public/
+content/
 content/*
 
+.DS_Store
