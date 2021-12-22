@@ -3,6 +3,8 @@ A git-based content management system for [Digital Land](https://digital-land.in
 
 Currently using [NetlifyCMS](https://netlifycms.org) to manage markdown files with structured frontmatter to generate specifications consumed by digital-land web-apps to show content in various pages.
 
+---
+
 ## Running the CMS locally
 
 ### Requirements
@@ -19,3 +21,9 @@ Currently using [NetlifyCMS](https://netlifycms.org) to manage markdown files wi
 3. Now run `npm start`
 
 This will install the development dependancies and start a webserver and NetlifyCMS local proxy which will show you the CMS in your browser.
+
+---
+
+## Configuring the CMS
+
+NetlifyCMS is configured in the [config.yml](app/config.yml) file. See the [official documentation](https://www.netlifycms.org/docs/) for guidance and detailed information about the [configuration options](https://www.netlifycms.org/docs/configuration-options/).
